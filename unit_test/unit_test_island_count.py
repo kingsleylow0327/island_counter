@@ -1,9 +1,8 @@
+import sys
+sys.path.append("..")
 import unittest
 from unittest.mock import Mock
-import sys
-sys.path.append("../")
-import island_counter as ic
-
+from helper import island_counter as ic
 
 class IslandCountTest(unittest.TestCase):
     def test_island_count_ok(self):

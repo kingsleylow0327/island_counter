@@ -1,6 +1,6 @@
 import sys
-from island_counter import island_count
-from map_validate import map_validator
+from helper.island_counter import island_count
+from helper.map_validator import map_validate
 from pathlib import Path
 
 
@@ -38,7 +38,7 @@ def main():
         return ret_json
 
     # Checking 2D array
-    json = map_validator(raw_array)
+    json = map_validate(raw_array)
 
     if json["status"] == "Ok":
         json = island_count(json["message"])

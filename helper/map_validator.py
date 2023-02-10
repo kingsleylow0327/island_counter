@@ -1,4 +1,4 @@
-def map_validator(raw_array):
+def map_validate(raw_array):
     ret_json = {}
     filtered_lines = []
     line_len = 0
