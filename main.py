@@ -1,8 +1,9 @@
 import sys
 from pathlib import Path
 
-
-def map_validator(raw_array, input_path):
+# Validating Map
+def map_validator(raw_array):
+    ret_json = {}
     filtered_lines = []
     line_len = 0
 
@@ -13,28 +14,35 @@ def map_validator(raw_array, input_path):
         if line_len == 0 and len(raw_line) != 0:
             line_len = len(raw_line)
         if len(raw_line) != line_len and raw_line != "":
-            print(f"Shape of '{input_path}' is not x*y")
-            filtered_lines = []
-            break
+            ret_json["status"] = "Error"
+            ret_json["message"] = "Map shape of is not x*y"
+            return ret_json
 
         # Check for empty lines
         if raw_line == "":
-            print(f"'{input_path}' contained exessive empty lines")
-            break
+            ret_json["status"] = "Error"
+            ret_json["message"] = "Map contained exessive empty lines"
+            return ret_json
 
         # Check for characters
         if not all(ch in "01" for ch in raw_line):
-            print(f"'{input_path}' contained characters other than '0' & '1'")
-            break
+            ret_json["status"] = "Error"
+            ret_json["message"] = "Map contained characters other than '0' & '1'"
+            return ret_json
 
         filtered_lines.append([c for c in raw_line])
-    return filtered_lines
+    ret_json["status"] = "Ok"
+    ret_json["message"] = filtered_lines
+    return ret_json
 
 
 # Main Counting Logic
-def island_count(map) -> int:
+def island_count(map):
+    ret_json = {}
     if len(map) < 1:
-        return "Empty Map"
+        ret_json["status"] = "Error"
+        ret_json["message"] = "Empty Map"
+        return ret_json
 
     col = len(map)
     row = len(map[0])
@@ -45,14 +53,16 @@ def island_count(map) -> int:
             if map[y][x] == '1':
                 walk(y, x, map)
                 island_num += 1
-    return island_num
+    ret_json["status"] = "Ok"
+    ret_json["message"] = str(island_num)
+    return ret_json
 
 
 # Map Walking logic
 def walk(y, x, map):
     # Prevent walk out the map
     if y < 0 or y >= len(map) or x < 0 or x >= len(map[y]):
-        return -1
+        return
     if map[y][x] == '1':
         map[y][x] = '0'  # Set 1 to 0 to prevent come back again
         walk(y-1, x, map)  # up
@@ -62,23 +72,27 @@ def walk(y, x, map):
 
 
 def main():
+    ret_json = {}
     # Initialize Variable
     raw_array = []
 
     # Python script argument
     if len(sys.argv) <= 1:
-        print("Missing Text Path. Try: main.py <input>.txt")
-        return "Error"
+        ret_json["status"] = "Error"
+        ret_json["message"] = "Missing Text Path. Try: main.py <input>.txt"
+        return ret_json
 
     # Check input path is existed and is txt file
     input_path = Path(sys.argv[1])
     if input_path.suffix != '.txt':
-        print(f"'{input_path}' is not '.txt' file type")
-        return "Error"
+        ret_json["status"] = "Error"
+        ret_json["message"] = f"'{input_path}' is not '.txt' file type"
+        return ret_json
 
     if not input_path.is_file():
-        print(f"'{input_path}' file not found")
-        return "Error"
+        ret_json["status"] = "Error"
+        ret_json["message"] = f"'{input_path}' file not found"
+        return ret_json
 
     # Read from txt file
     with open(input_path) as f:
@@ -86,14 +100,16 @@ def main():
 
     # Check raw_array is not empty:
     if len(raw_array) < 1:
-        print(f"'{input_path}' is an empty txt file")
-        return "Error"
+        ret_json["status"] = "Error"
+        ret_json["message"] = f"'{input_path}' is an empty txt file"
+        return ret_json
 
     # Checking 2D array
-    map = map_validator(raw_array, input_path)
+    json = map_validator(raw_array)
 
-    island_number = island_count(map)
-    return island_number
+    if json["status"] == "Ok":
+        json = island_count(json["message"])
+    return json
 
 
 if "__main__" == __name__:
