@@ -4,6 +4,7 @@ import sys
 sys.path.append("../")
 import island_counter as ic
 
+
 class IslandCountTest(unittest.TestCase):
     def test_island_count_ok(self):
         ic.walk = Mock(return_value=None)
@@ -26,13 +27,12 @@ class IslandCountTest(unittest.TestCase):
         self.assertEqual(ic.walk.call_count, 3)
         self.assertEqual(val3["status"], "Ok")
         self.assertEqual(val3["message"], "3")
-    
+
     def test_island_count_empty(self):
         array1 = []
         val1 = ic.island_count(array1)
         self.assertEqual(val1["status"], "Error")
         self.assertEqual(val1["message"], "Empty Map")
-
 
 
 if __name__ == "__main__":
