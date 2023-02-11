@@ -31,12 +31,12 @@ class MapValidatorTest(unittest.TestCase):
         array1 = ["00", "", "01"]
         val1 = map_validate(array1)
         self.assertEqual(val1["status"], "Error")
-        self.assertEqual(val1["message"], "Map contained exessive empty lines")
+        self.assertEqual(val1["message"], "Map contained excessive empty lines")
 
         array2 = ["00", "01", ""]
         val2 = map_validate(array2)
         self.assertEqual(val2["status"], "Error")
-        self.assertEqual(val2["message"], "Map contained exessive empty lines")
+        self.assertEqual(val2["message"], "Map contained excessive empty lines")
 
     def test_map_validator_wrong_charactor(self):
         array1 = ["100", "0ab", "111"]
