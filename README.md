@@ -1,6 +1,19 @@
+git-website: https://github.com/kingsleylow0327/island_counter
 # island_counter
+This program allow user to count groups of '1's in a map full of '0'.
+eg:
+0 0 0 0
+0 1 1 0
+0 1 0 0
+1 0 0 0
 
-2 ways to run this program
+The output of the program with above eg input is 2 (Diagonal '1's is not grouped).
+The output format is in form of json.
+eg:
+{"status":"Ok","message":"2"} represents 2 groups of '1's as result
+{"status":"Error","message":"Map shape of is not x*y"} represents Error due to input shape
+
+There are 2 ways to run this program, following shows the steps to run main program and unit test for each ways
 
 ## sh Method:
 
