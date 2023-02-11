@@ -17,7 +17,7 @@ def map_validate(raw_array):
         # Check for empty lines
         if raw_line == "":
             ret_json["status"] = "Error"
-            ret_json["message"] = "Map contained exessive empty lines"
+            ret_json["message"] = "Map contained excessive empty lines"
             return ret_json
 
         # Check for characters
