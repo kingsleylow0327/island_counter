@@ -23,7 +23,7 @@ def map_validate(raw_array):
         # Check for characters
         if not all(ch in "01" for ch in raw_line):
             ret_json["status"] = "Error"
-            ret_json["message"] = "Map contained characters other than '0' & '1'"
+            ret_json["message"] = "Map contained characters other than '0' & '1'"  # noqa E501
             return ret_json
 
         filtered_lines.append([c for c in raw_line])

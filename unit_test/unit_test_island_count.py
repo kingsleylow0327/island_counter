@@ -1,8 +1,9 @@
 import sys
 sys.path.append("..")
-import unittest
-from unittest.mock import Mock
-from helper import island_counter as ic
+import unittest  # noqa E402
+from unittest.mock import Mock  # noqa E402
+from helper import island_counter as ic  # noqa E402
+
 
 class IslandCountTest(unittest.TestCase):
     def test_island_count_ok(self):

@@ -1,7 +1,7 @@
 import sys
 sys.path.append("../")
-import unittest
-from helper.map_validator import map_validate
+import unittest  # noqa E402
+from helper.map_validator import map_validate  # noqa E402
 
 
 class MapValidatorTest(unittest.TestCase):
@@ -42,12 +42,12 @@ class MapValidatorTest(unittest.TestCase):
         array1 = ["100", "0ab", "111"]
         val1 = map_validate(array1)
         self.assertEqual(val1["status"], "Error")
-        self.assertEqual(val1["message"], "Map contained characters other than '0' & '1'")
+        self.assertEqual(val1["message"], "Map contained characters other than '0' & '1'")  # noqa E501
 
         array2 = ["100", "1 0", "111"]
         val2 = map_validate(array2)
         self.assertEqual(val2["status"], "Error")
-        self.assertEqual(val2["message"], "Map contained characters other than '0' & '1'")
+        self.assertEqual(val2["message"], "Map contained characters other than '0' & '1'")  # noqa E501
 
 
 if __name__ == "__main__":
