@@ -5,9 +5,9 @@ eg:\
 0000\
 0110\
 0100\
-1000\
+1000
 
-The output of the program with above eg input is 2 (Diagonal '1's is not grouped).
+The output of the program with above eg input is 2 (Diagonal '1's is not grouped).\
 The output format is in form of json.\
 eg:\
 {"status":"Ok","message":"2"} represents 2 groups of '1's as result\
