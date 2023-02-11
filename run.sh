@@ -1,3 +1,4 @@
+#!/bin/bash
 # Argument Check
 if [[ $# -eq 0 ]] ; then
     echo 'Missing Text Path. Try: sh ./run.sh <input>.txt"'
