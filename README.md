@@ -2,7 +2,8 @@
 
 2 ways to run this program
 
-sh Method:
+## sh Method:
+=============
 
 Pre-requisite to run sh command:
 - Install Docker
@@ -17,7 +18,8 @@ Unit Test:
 2. Wait and see the result
 
 
-Python Method:
+## Python Method:
+=================
 
 Pre-requisite to run using python command:
 - Install Python 3.x
